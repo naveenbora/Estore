@@ -16,16 +16,21 @@ pipeline {
           steps  {
                 sh 'dotnet publish'
           }
-          
-       }
-       
-      
-    }
-     post{
+          post{
                 always{
                     archiveArtifacts '**'
-                    sh 'dotnet EStore/bin/Release/netcoreapp2.2/EStore.dll'
+                    
                 
                 }
        }
+          
+       }
+       stage('Deploy'){
+          steps  {
+                sh 'dotnet EStore/bin/Release/netcoreapp2.2/EStore.dll'
+          }
+       }
+      
+    }
+     
 }
