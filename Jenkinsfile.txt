@@ -16,13 +16,14 @@ pipeline {
           steps  {
                 sh 'dotnet publish'
           }
-           post{
+          
+       }
+      
+    }
+     post{
                 always{
                     archiveArtifacts '**'
                 
                 }
        }
-       }
-      
-    }
 }
